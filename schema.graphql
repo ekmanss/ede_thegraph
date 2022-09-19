@@ -1,0 +1,34 @@
+type ExampleEntity @entity {
+  id: Bytes!
+  count: BigInt!
+  account: Bytes! # address
+  orderIndex: BigInt! # uint256
+}
+
+
+type Account @entity {
+  id: Bytes!
+  address: String!
+  lastOrderIndex: BigInt!
+  orders: [Orders!]!
+}
+
+type Orders @entity {
+  id: Bytes!
+  orderOwner: Account!
+  ownerAddress: String! # address
+  orderIndex: BigInt! # uint256
+  excuted: Boolean!
+}
+
+type Transaction @entity {
+  # txn hash
+  id: ID!
+  # block txn was included in
+  blockNumber: BigInt!
+  # timestamp txn was confirmed
+  timestamp: BigInt!
+  # gas used during txn execution
+  gasUsed: BigInt!
+  gasPrice: BigInt!
+}
