@@ -10,10 +10,10 @@ type Account @entity {
   id: Bytes!
   address: String!
   lastOrderIndex: BigInt!
-  orders: [Orders!]!
+  orders: [Order!]!
 }
 
-type Orders @entity {
+type Order @entity {
   id: Bytes!
   orderOwner: Account!
   ownerAddress: String! # address

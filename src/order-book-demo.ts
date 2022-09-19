@@ -18,7 +18,7 @@ import {
   UpdateMinPurchaseTokenAmountUsd,
   UpdateSwapOrder
 } from "../generated/OrderBookDemo/OrderBookDemo"
-import { ExampleEntity, Account, Orders, Transaction } from "../generated/schema"
+import { ExampleEntity, Account, Order, Transaction } from "../generated/schema"
 
 // handle IncreaseOrder
 export function handleCreateIncreaseOrder(event: CreateIncreaseOrder): void {
@@ -31,7 +31,7 @@ export function handleCreateIncreaseOrder(event: CreateIncreaseOrder): void {
 
     let newOrdersList = account.orders
     //use address concat lastOrderIndex as uuid
-    let order = new Orders(event.params.account.concatI32(event.params.orderIndex.toI32()))
+    let order = new Order(event.params.account.concatI32(event.params.orderIndex.toI32()))
     order.orderOwner = account.id
     order.ownerAddress = account.address
     order.orderIndex = event.params.orderIndex
@@ -48,7 +48,7 @@ export function handleCreateIncreaseOrder(event: CreateIncreaseOrder): void {
     let newOrder = account.orders
 
     //use address concat lastOrderIndex as uuid
-    let order = new Orders(event.params.account.concatI32(event.params.orderIndex.toI32()))
+    let order = new Order(event.params.account.concatI32(event.params.orderIndex.toI32()))
     order.orderOwner = account.id
     order.ownerAddress = account.address
     order.orderIndex = event.params.orderIndex
@@ -71,7 +71,7 @@ export function handleExecuteIncreaseOrder(event: ExecuteIncreaseOrder): void {
   let address = event.params.account
   let orderIdex = event.params.orderIndex
 
-  let testOrder = Orders.load(event.params.account.concatI32(orderIdex.toI32()));
+  let testOrder = Order.load(event.params.account.concatI32(orderIdex.toI32()));
   if (testOrder !== null) {
     // testOrder.excuted = true
     
@@ -84,7 +84,7 @@ export function handleExecuteIncreaseOrder(event: ExecuteIncreaseOrder): void {
     let orderList = account.orders
     //find order of event.params.orderIndex and remove it
     for (let i = 0; i < orderList.length;i++) {
-      let iOrder = Orders.load(orderList[i])
+      let iOrder = Order.load(orderList[i])
       if (iOrder !== null){
           if (iOrder.orderIndex.equals(orderIdex)){
             //set excuted to true
