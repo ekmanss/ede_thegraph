@@ -18,6 +18,15 @@ type Order @entity {
   orderOwner: Account!
   ownerAddress: String! # address
   orderIndex: BigInt! # uint256
+  purchaseToken: String! # address
+  purchaseTokenAmount: BigInt! # uint256
+  collateralToken: String! # address
+  indexTokenAddress: String!
+  sizeDelta: BigInt! # uint256
+  isLong: Boolean!
+  triggerPrice: String!
+  triggerAboveThreshold: Boolean!
+  executionFee: String!
   excuted: Boolean!
 }
 
