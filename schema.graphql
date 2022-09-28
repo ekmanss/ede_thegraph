@@ -11,6 +11,7 @@ type Account @entity {
   address: String!
   lastOrderIndex: BigInt!
   orders: [Order!]!
+  deOrders: [DeOrder!]!
 }
 
 type Order @entity {
@@ -21,6 +22,22 @@ type Order @entity {
   purchaseToken: String! # address
   purchaseTokenAmount: BigInt! # uint256
   collateralToken: String! # address
+  indexTokenAddress: String!
+  sizeDelta: BigInt! # uint256
+  isLong: Boolean!
+  triggerPrice: String!
+  triggerAboveThreshold: Boolean!
+  executionFee: String!
+  excuted: Boolean!
+}
+
+type DeOrder @entity {
+  id: Bytes!
+  orderOwner: Account!
+  ownerAddress: String! # address
+  orderIndex: BigInt! # uint256
+  collateralToken: String! # address
+  collateralDelta: BigInt! # uint256
   indexTokenAddress: String!
   sizeDelta: BigInt! # uint256
   isLong: Boolean!
