@@ -3,5 +3,11 @@
     "OrderBookDemo": {
       "address": "0x3071d2106AE93542c8f084FAc9976957EbE1D6E0"
     }
+  },
+  "bsctest": {
+    "OrderBookDemo": {
+      "address": "0xaF3E45a3A51a586Fd4657a202f8488B25F5a5d81",
+      "startBlock": 23257250
+    }
   }
 }
