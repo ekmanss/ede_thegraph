@@ -74,7 +74,7 @@ dataSources:
     source:
       address: "0xa98F55AD13dEaA42610b634d7a8c249eB5f03Ea2"
       abi: PositionRouter
-      startBlock: 23257250
+      startBlock: 23257200
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -86,11 +86,6 @@ dataSources:
         - CreateDecreasePosition
         - ExecuteDecreasePosition
         - CancelDecreasePosition
-        - SetPositionKeeper
-        - SetMinExecutionFee
-        - SetIsLeverageEnabled
-        - SetDelayValues
-        - SetRequestKeysStartValues
       abis:
         - name: PositionRouter
           file: ./abis/PositionRouter.json
@@ -107,15 +102,4 @@ dataSources:
           handler: handleExecuteDecreasePosition
         - event: CancelDecreasePosition(indexed address,address[],address,uint256,uint256,bool,address,uint256,uint256,uint256,uint256,uint256)
           handler: handleCancelDecreasePosition
-        - event: SetPositionKeeper(indexed address,bool)
-          handler: handleSetPositionKeeper
-        - event: SetMinExecutionFee(uint256)
-          handler: handleSetMinExecutionFee
-        - event: SetIsLeverageEnabled(bool)
-          handler: handleSetIsLeverageEnabled
-        - event: SetDelayValues(uint256,uint256,uint256)
-          handler: handleSetDelayValues
-        - event: SetRequestKeysStartValues(uint256,uint256)
-          handler: handleSetRequestKeysStartValues
-
       file: ./src/positionRouter.ts
