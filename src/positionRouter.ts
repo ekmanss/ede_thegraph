@@ -20,6 +20,8 @@ export function handleCreateIncreasePosition(event: CreateIncreasePosition): voi
         marketOrderCreateIncreasePosition.save()
     }
 }
+export function handleExecuteIncreasePosition(event: ExecuteIncreasePosition): void {}
+export function handleCancelIncreasePosition(event: ExecuteDecreasePosition): void {}
 
 export function handleCreateDecreasePosition(event: CreateDecreasePosition): void {
     let marketOrderCreateDecreasePosition = MarketOrderCreateDecreasePosition.load("marketOrderCreateDecreasePosition")
@@ -33,3 +35,5 @@ export function handleCreateDecreasePosition(event: CreateDecreasePosition): voi
         marketOrderCreateDecreasePosition.save()
     }
 }
+export function handleExecuteDecreasePosition(event: ExecuteDecreasePosition): void {}
+export function handleCancelDecreasePosition(event: ExecuteDecreasePosition): void {}
