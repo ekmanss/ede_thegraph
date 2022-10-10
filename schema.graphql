@@ -47,6 +47,16 @@ type DeOrder @entity {
   excuted: Boolean!
 }
 
+type MarketOrderCreateIncreasePosition @entity {
+  id: ID!
+  counterIndex: BigInt!
+}
+
+type MarketOrderCreateDecreasePosition @entity {
+  id: ID!
+  counterIndex: BigInt!
+}
+
 type Transaction @entity {
   # txn hash
   id: ID!

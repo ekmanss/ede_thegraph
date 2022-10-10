@@ -67,3 +67,55 @@ dataSources:
         - event: UpdateSwapOrder(indexed address,uint256,address[],uint256,uint256,uint256,bool,bool,uint256)
           handler: handleUpdateSwapOrder
       file: ./src/order-book-demo.ts
+
+  - kind: ethereum
+    name: PositionRouter
+    network: Binance
+    source:
+      address: "0xa98F55AD13dEaA42610b634d7a8c249eB5f03Ea2"
+      abi: PositionRouter
+      startBlock: 23257250
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - CreateIncreasePosition
+        - ExecuteIncreasePosition
+        - CancelIncreasePosition
+        - CreateDecreasePosition
+        - ExecuteDecreasePosition
+        - CancelDecreasePosition
+        - SetPositionKeeper
+        - SetMinExecutionFee
+        - SetIsLeverageEnabled
+        - SetDelayValues
+        - SetRequestKeysStartValues
+      abis:
+        - name: PositionRouter
+          file: ./abis/PositionRouter.json
+      eventHandlers:
+        - event: CreateIncreasePosition(indexed address,address[],address,uint256,uint256,uint256,bool,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleCreateIncreasePosition
+        - event: ExecuteIncreasePosition(indexed address,address[],address,uint256,uint256,uint256,bool,uint256,uint256,uint256,uint256)
+          handler: handleExecuteIncreasePosition
+        - event: CancelIncreasePosition(indexed address,address[],address,uint256,uint256,uint256,bool,uint256,uint256,uint256,uint256)
+          handler: handleCancelIncreasePosition
+        - event: CreateDecreasePosition(indexed address,address[],address,uint256,uint256,bool,address,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleCreateDecreasePosition
+        - event: ExecuteDecreasePosition(indexed address,address[],address,uint256,uint256,bool,address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleExecuteDecreasePosition
+        - event: CancelDecreasePosition(indexed address,address[],address,uint256,uint256,bool,address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleCancelDecreasePosition
+        - event: SetPositionKeeper(indexed address,bool)
+          handler: handleSetPositionKeeper
+        - event: SetMinExecutionFee(uint256)
+          handler: handleSetMinExecutionFee
+        - event: SetIsLeverageEnabled(bool)
+          handler: handleSetIsLeverageEnabled
+        - event: SetDelayValues(uint256,uint256,uint256)
+          handler: handleSetDelayValues
+        - event: SetRequestKeysStartValues(uint256,uint256)
+          handler: handleSetRequestKeysStartValues
+
+      file: ./src/positionRouter.ts
