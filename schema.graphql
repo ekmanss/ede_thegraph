@@ -28,6 +28,7 @@ type Order @entity {
   triggerPrice: String!
   triggerAboveThreshold: Boolean!
   executionFee: String!
+  timeStamp: BigInt!
   excuted: Boolean!
 }
 
@@ -44,6 +45,7 @@ type DeOrder @entity {
   triggerPrice: String!
   triggerAboveThreshold: Boolean!
   executionFee: String!
+  timeStamp: BigInt!
   excuted: Boolean!
 }
 

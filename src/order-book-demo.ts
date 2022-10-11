@@ -46,6 +46,7 @@ export function handleCreateIncreaseOrder(event: CreateIncreaseOrder): void {
         order.triggerAboveThreshold = event.params.triggerAboveThreshold
         order.executionFee = event.params.executionFee.toString()
         order.excuted = false
+        order.timeStamp = event.block.timestamp
         order.save()
 
         newOrdersList.push(order.id)
@@ -71,6 +72,7 @@ export function handleCreateIncreaseOrder(event: CreateIncreaseOrder): void {
         order.triggerAboveThreshold = event.params.triggerAboveThreshold
         order.executionFee = event.params.executionFee.toString()
         order.excuted = false
+        order.timeStamp = event.block.timestamp
         order.save()
 
         newOrdersList.push(order.id)
@@ -98,6 +100,7 @@ export function handleUpdateIncreaseOrder(event: UpdateIncreaseOrder): void {
                     iOrder.sizeDelta = event.params.sizeDelta
                     iOrder.triggerPrice = event.params.triggerPrice.toString()
                     iOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
+                    iOrder.timeStamp = event.block.timestamp
                     log.debug("iOrder Id: {} , excuted:", [iOrder.id.toHexString(), iOrder.excuted.toString()])
                     iOrder.save()
                 }
@@ -122,6 +125,7 @@ export function handleCancelIncreaseOrder(event: CancelIncreaseOrder): void {
                 if (iOrder.orderIndex.equals(orderIdex)) {
                     //set excuted to true
                     iOrder.excuted = true
+                    iOrder.timeStamp = event.block.timestamp
                     log.debug("iOrder Id: {} , excuted:", [iOrder.id.toHexString(), iOrder.excuted.toString()])
                     iOrder.save()
                 }
@@ -150,6 +154,7 @@ export function handleExecuteIncreaseOrder(event: ExecuteIncreaseOrder): void {
                 if (iOrder.orderIndex.equals(orderIdex)) {
                     //set excuted to true
                     iOrder.excuted = true
+                    iOrder.timeStamp = event.block.timestamp
                     log.debug("iOrder Id: {} , excuted:", [iOrder.id.toHexString(), iOrder.excuted.toString()])
                     iOrder.save()
                 }
@@ -186,6 +191,7 @@ export function handleCreateDecreaseOrder(event: CreateDecreaseOrder): void {
         order.triggerAboveThreshold = event.params.triggerAboveThreshold
         order.executionFee = event.params.executionFee.toString()
         order.excuted = false
+        order.timeStamp = event.block.timestamp
         order.save()
 
         newOrdersList.push(order.id)
@@ -210,6 +216,7 @@ export function handleCreateDecreaseOrder(event: CreateDecreaseOrder): void {
         order.triggerAboveThreshold = event.params.triggerAboveThreshold
         order.executionFee = event.params.executionFee.toString()
         order.excuted = false
+        order.timeStamp = event.block.timestamp
         order.save()
 
         newOrdersList.push(order.id)
@@ -239,6 +246,7 @@ export function handleUpdateDecreaseOrder(event: UpdateDecreaseOrder): void {
                     iOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
                     iOrder.sizeDelta = event.params.sizeDelta
                     iOrder.collateralDelta = event.params.collateralDelta
+                    iOrder.timeStamp = event.block.timestamp
                     log.debug("iOrder Id: {} , excuted:", [iOrder.id.toHexString(), iOrder.excuted.toString()])
                     iOrder.save()
                 }
@@ -265,6 +273,7 @@ export function handleCancelDecreaseOrder(event: CancelDecreaseOrder): void {
                 if (iOrder.orderIndex.equals(orderIdex)) {
                     //set excuted to true
                     iOrder.excuted = true
+                    iOrder.timeStamp = event.block.timestamp
                     log.debug("iOrder Id: {} , excuted:", [iOrder.id.toHexString(), iOrder.excuted.toString()])
                     iOrder.save()
                 }
@@ -291,6 +300,7 @@ export function handleExecuteDecreaseOrder(event: ExecuteDecreaseOrder): void {
                 if (iOrder.orderIndex.equals(orderIdex)) {
                     //set excuted to true
                     iOrder.excuted = true
+                    iOrder.timeStamp = event.block.timestamp
                     log.debug("iOrder Id: {} , excuted:", [iOrder.id.toHexString(), iOrder.excuted.toString()])
                     iOrder.save()
                 }
