@@ -325,7 +325,7 @@ export function handleCreateSwapOrder(event: CreateSwapOrder): void {
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
-            pathRouter.concat("-").concat(event.params.path[i].toHexString())
+            pathRouter = pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
         swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
@@ -358,7 +358,7 @@ export function handleUpdateSwapOrder(event: UpdateSwapOrder): void {
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
-            pathRouter.concat("-").concat(event.params.path[i].toHexString())
+            pathRouter = pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
         swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
@@ -394,7 +394,7 @@ export function handleExecuteSwapOrder(event: ExecuteSwapOrder): void {
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
-            pathRouter.concat("-").concat(event.params.path[i].toHexString())
+            pathRouter = pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
         swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
@@ -430,7 +430,7 @@ export function handleCancelSwapOrder(event: CancelSwapOrder): void {
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
-            pathRouter.concat("-").concat(event.params.path[i].toHexString())
+            pathRouter = pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
         swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
