@@ -320,11 +320,14 @@ export function handleCreateSwapOrder(event: CreateSwapOrder): void {
         swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
         swapOrder.ownerAddress = event.params.account.toHexString()
         swapOrder.orderIndex = event.params.orderIndex
+        let pathRouter = ""
         swapOrder.path = []
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
+            pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
+        swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
         swapOrder.amountIn = event.params.amountIn
         swapOrder.minOut = event.params.minOut
@@ -350,11 +353,14 @@ export function handleUpdateSwapOrder(event: UpdateSwapOrder): void {
         swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
         swapOrder.ownerAddress = event.params.account.toHexString()
         swapOrder.orderIndex = event.params.ordexIndex
+        let pathRouter = ""
         swapOrder.path = []
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
+            pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
+        swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
         swapOrder.amountIn = event.params.amountIn
         swapOrder.minOut = event.params.minOut
@@ -383,11 +389,14 @@ export function handleExecuteSwapOrder(event: ExecuteSwapOrder): void {
         swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
         swapOrder.ownerAddress = event.params.account.toHexString()
         swapOrder.orderIndex = event.params.orderIndex
+        let pathRouter = ""
         swapOrder.path = []
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
+            pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
+        swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
         swapOrder.amountIn = event.params.amountIn
         swapOrder.minOut = event.params.minOut
@@ -416,11 +425,14 @@ export function handleCancelSwapOrder(event: CancelSwapOrder): void {
         swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
         swapOrder.ownerAddress = event.params.account.toHexString()
         swapOrder.orderIndex = event.params.orderIndex
+        let pathRouter = ""
         swapOrder.path = []
         let newPath = swapOrder.path
         for (let i = 0; i < event.params.path.length; i++) {
             newPath.push(event.params.path[i].toHexString())
+            pathRouter.concat("-").concat(event.params.path[i].toHexString())
         }
+        swapOrder.pathRouter = pathRouter
         swapOrder.path = newPath
         swapOrder.amountIn = event.params.amountIn
         swapOrder.minOut = event.params.minOut

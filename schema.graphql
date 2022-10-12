@@ -54,6 +54,7 @@ type SwapOrder @entity {
   ownerAddress: String! # address
   orderIndex: BigInt! # uint256
   path: [String!]!
+  pathRouter: String!
   amountIn: BigInt! # uint256
   minOut: BigInt! # uint256
   triggerRatio: BigInt! # uint256
