@@ -440,6 +440,14 @@ export function handleCancelSwapOrder(event: CancelSwapOrder): void {
     }
 
 }
+//================================================================================================
+
+export function handleInitialize(event: Initialize): void {}
+export function handleUpdateGov(event: UpdateGov): void {}
+export function handleUpdateMinExecutionFee(event: UpdateMinExecutionFee): void {}
+export function handleUpdateMinPurchaseTokenAmountUsd(event: UpdateMinPurchaseTokenAmountUsd): void {}
+
+
 
 //utils
 export function loadTransaction(event: ethereum.Event): Transaction {
