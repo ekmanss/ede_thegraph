@@ -49,6 +49,21 @@ type DeOrder @entity {
   excuted: Boolean!
 }
 
+type SwapOrder @entity {
+  id: Bytes!
+  ownerAddress: String! # address
+  orderIndex: BigInt! # uint256
+  path: [String!]!
+  amountIn: BigInt! # uint256
+  minOut: BigInt! # uint256
+  triggerRatio: BigInt! # uint256
+  triggerAboveThreshold: Boolean!
+  shouldUnwrap: Boolean!
+  executionFee: BigInt! # uint256
+  timeStamp: BigInt!
+  excuted: Boolean!
+}
+
 type MarketOrderCreateIncreasePosition @entity {
   id: ID!
   counterIndex: BigInt!

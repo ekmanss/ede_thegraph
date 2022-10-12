@@ -18,7 +18,7 @@ import {
     UpdateMinPurchaseTokenAmountUsd,
     UpdateSwapOrder
 } from "../generated/OrderBookDemo/OrderBookDemo"
-import {ExampleEntity, Account, Order, DeOrder, Transaction} from "../generated/schema"
+import {ExampleEntity, Account, Order, DeOrder,SwapOrder, Transaction} from "../generated/schema"
 
 // handle IncreaseOrder
 export function handleCreateIncreaseOrder(event: CreateIncreaseOrder): void {
@@ -314,14 +314,132 @@ export function handleExecuteDecreaseOrder(event: ExecuteDecreaseOrder): void {
 
 // handle SwapOrder
 export function handleCreateSwapOrder(event: CreateSwapOrder): void {
+    let swapOrderIndex = event.params.orderIndex
+    let swapOrder = SwapOrder.load(event.params.account.concatI32(swapOrderIndex.toI32()));
+    if (swapOrder === null) {
+        swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
+        swapOrder.ownerAddress = event.params.account.toHexString()
+        swapOrder.orderIndex = event.params.orderIndex
+        swapOrder.path = []
+        let newPath = swapOrder.path
+        for (let i = 0; i < event.params.path.length; i++) {
+            newPath.push(event.params.path[i].toHexString())
+        }
+        swapOrder.path = newPath
+        swapOrder.amountIn = event.params.amountIn
+        swapOrder.minOut = event.params.minOut
+        swapOrder.triggerRatio = event.params.triggerRatio
+        swapOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
+        swapOrder.shouldUnwrap = event.params.shouldUnwrap
+        swapOrder.executionFee = event.params.executionFee
+        swapOrder.timeStamp = event.block.timestamp
+        swapOrder.excuted = false
+
+        swapOrder.save()
+    }else {
+
+    }
+
 }
 
 export function handleUpdateSwapOrder(event: UpdateSwapOrder): void {
+
+    let swapOrderIndex = event.params.ordexIndex
+    let swapOrder = SwapOrder.load(event.params.account.concatI32(swapOrderIndex.toI32()));
+    if (swapOrder === null) {
+        swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
+        swapOrder.ownerAddress = event.params.account.toHexString()
+        swapOrder.orderIndex = event.params.ordexIndex
+        swapOrder.path = []
+        let newPath = swapOrder.path
+        for (let i = 0; i < event.params.path.length; i++) {
+            newPath.push(event.params.path[i].toHexString())
+        }
+        swapOrder.path = newPath
+        swapOrder.amountIn = event.params.amountIn
+        swapOrder.minOut = event.params.minOut
+        swapOrder.triggerRatio = event.params.triggerRatio
+        swapOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
+        swapOrder.shouldUnwrap = event.params.shouldUnwrap
+        swapOrder.executionFee = event.params.executionFee
+        swapOrder.timeStamp = event.block.timestamp
+        swapOrder.excuted = false
+
+        swapOrder.save()
+    }else {
+        swapOrder.minOut = event.params.minOut
+        swapOrder.triggerRatio = event.params.triggerRatio
+        swapOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
+        swapOrder.timeStamp = event.block.timestamp
+
+        swapOrder.save()
+    }
 }
 
 export function handleExecuteSwapOrder(event: ExecuteSwapOrder): void {
+    let swapOrderIndex = event.params.orderIndex
+    let swapOrder = SwapOrder.load(event.params.account.concatI32(swapOrderIndex.toI32()));
+    if (swapOrder === null) {
+        swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
+        swapOrder.ownerAddress = event.params.account.toHexString()
+        swapOrder.orderIndex = event.params.orderIndex
+        swapOrder.path = []
+        let newPath = swapOrder.path
+        for (let i = 0; i < event.params.path.length; i++) {
+            newPath.push(event.params.path[i].toHexString())
+        }
+        swapOrder.path = newPath
+        swapOrder.amountIn = event.params.amountIn
+        swapOrder.minOut = event.params.minOut
+        swapOrder.triggerRatio = event.params.triggerRatio
+        swapOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
+        swapOrder.shouldUnwrap = event.params.shouldUnwrap
+        swapOrder.executionFee = event.params.executionFee
+        swapOrder.timeStamp = event.block.timestamp
+        swapOrder.excuted = false
+
+        swapOrder.save()
+    }else {
+        swapOrder.excuted = true
+        swapOrder.timeStamp = event.block.timestamp
+
+        swapOrder.save()
+    }
+
 }
 
+export function handleCancelSwapOrder(event: CancelSwapOrder): void {
+
+    let swapOrderIndex = event.params.orderIndex
+    let swapOrder = SwapOrder.load(event.params.account.concatI32(swapOrderIndex.toI32()));
+    if (swapOrder === null) {
+        swapOrder = new SwapOrder(event.params.account.concatI32(swapOrderIndex.toI32()))
+        swapOrder.ownerAddress = event.params.account.toHexString()
+        swapOrder.orderIndex = event.params.orderIndex
+        swapOrder.path = []
+        let newPath = swapOrder.path
+        for (let i = 0; i < event.params.path.length; i++) {
+            newPath.push(event.params.path[i].toHexString())
+        }
+        swapOrder.path = newPath
+        swapOrder.amountIn = event.params.amountIn
+        swapOrder.minOut = event.params.minOut
+        swapOrder.triggerRatio = event.params.triggerRatio
+        swapOrder.triggerAboveThreshold = event.params.triggerAboveThreshold
+        swapOrder.shouldUnwrap = event.params.shouldUnwrap
+        swapOrder.executionFee = event.params.executionFee
+        swapOrder.timeStamp = event.block.timestamp
+        swapOrder.excuted = false
+
+        swapOrder.save()
+    }else {
+        swapOrder.excuted = true
+        swapOrder.timeStamp = event.block.timestamp
+
+        swapOrder.save()
+    }
+
+}
 
 //utils
 export function loadTransaction(event: ethereum.Event): Transaction {
