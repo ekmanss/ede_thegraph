@@ -1,13 +1,13 @@
 {
-  "name": "ede_thegraph",
+  "name": "ede_thegraph_elp",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ ekmanss/ede_thegraph",
-    "create-local": "graph create ekmanss/ede_thegraph --node http://127.0.0.1:8020",
+    "create-local": "graph create ekmanss/ede_thegraph_elp --node http://127.0.0.1:8020",
     "remove-local": "graph remove ekmanss/ede_thegraph --node http://127.0.0.1:8020 ",
-    "deploy-local": "graph deploy ekmanss/ede_thegraph --debug --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020"
+    "deploy-local": "graph deploy ekmanss/ede_thegraph_elp --debug --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.30.4",
