@@ -4,11 +4,23 @@ import {
     CreateDecreasePosition, ExecuteDecreasePosition, CancelDecreasePosition
 } from "../generated/PositionRouter/PositionRouter"
 
-import {MarketOrderCreateIncreasePosition,MarketOrderCreateDecreasePosition} from "../generated/schema"
+import {MarketOrderCreateIncreasePosition, MarketOrderCreateDecreasePosition, Account, Order} from "../generated/schema"
 
 
 //handle CreateIncreasePosition
 export function handleCreateIncreasePosition(event: CreateIncreasePosition): void {
+    let account = Account.load(event.params.account)
+    if (account === null) {
+        account = new Account(event.params.account)
+        account.address = event.params.account.toHexString()
+        account.lastOrderIndex = BigInt.fromI32(0)
+        account.orders = []
+        account.deOrders = []
+
+        account.save()
+
+    }
+
     let marketOrderCreateIncreasePosition = MarketOrderCreateIncreasePosition.load("marketOrderCreateIncreasePosition")
     if (marketOrderCreateIncreasePosition == null) {
         marketOrderCreateIncreasePosition = new MarketOrderCreateIncreasePosition("marketOrderCreateIncreasePosition")
@@ -24,6 +36,18 @@ export function handleExecuteIncreasePosition(event: ExecuteIncreasePosition): v
 export function handleCancelIncreasePosition(event: ExecuteDecreasePosition): void {}
 
 export function handleCreateDecreasePosition(event: CreateDecreasePosition): void {
+    let account = Account.load(event.params.account)
+    if (account === null) {
+        account = new Account(event.params.account)
+        account.address = event.params.account.toHexString()
+        account.lastOrderIndex = BigInt.fromI32(0)
+        account.orders = []
+        account.deOrders = []
+
+        account.save()
+
+    }
+
     let marketOrderCreateDecreasePosition = MarketOrderCreateDecreasePosition.load("marketOrderCreateDecreasePosition")
     if (marketOrderCreateDecreasePosition == null) {
         marketOrderCreateDecreasePosition = new MarketOrderCreateDecreasePosition("marketOrderCreateDecreasePosition")
