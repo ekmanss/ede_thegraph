@@ -6,9 +6,9 @@ dataSources:
     name: OrderBookDemo
     network: Binance
     source:
-      address: "0x3d37838E58De04f2B0eb500e6222C57965c32E79"
+      address: "0x7Dc233E6F0FD202492717184f950E0802e7A2B68"
       abi: OrderBookDemo
-      startBlock: 24782170
+      startBlock: 25044640
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -72,9 +72,9 @@ dataSources:
     name: PositionRouter
     network: Binance
     source:
-      address: "0xFe2300B466f6c5E6899FdeB0425Fd98F824D0162"
+      address: "0x0dd9Cb8C7806930172B138d70DD3a55471Cf75aB"
       abi: PositionRouter
-      startBlock: 24782150
+      startBlock: 25044640
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
