@@ -86,3 +86,38 @@ type Transaction @entity {
   gasUsed: BigInt!
   gasPrice: BigInt!
 }
+
+type CreateIncreasePositionInfo @entity {
+  id: ID!
+  account: Account!
+  path: [String!] # address[]
+  indexTokne: String! # uint256
+  amountIn: String! # address
+  minOut: String! # uint256
+  sizeDelta: String!
+  isLong: Boolean!
+  acceptablePrice: String!
+  executionFee: String!
+  index: BigInt!
+  blockNumber: BigInt!
+  blockTime: BigInt!
+  gasPrice: String!
+}
+
+
+type CreateDecreasePositionInfo @entity {
+  id: ID!
+  account: Account!
+  path: [String!] # address[]
+  indexTokne: String! # uint256
+  collateralDelta: String! # address
+  sizeDelta: String! # uint256
+  isLong: Boolean!
+  receiver: String!
+  acceptablePrice: String!
+  minOut: String!
+  executionFee: String!
+  index: BigInt!
+  blockNumber: BigInt!
+  blockTime: BigInt!
+}
