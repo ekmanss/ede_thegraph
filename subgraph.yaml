@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: OrderBookDemo
-    network: Binance
+    network: bsc
     source:
-      address: "0x664CeA278f21738618c19DC671aBa71f86894387"
+      address: "0xf08a5cc5f9432f684a30e9aade3d51a516b56178"
       abi: OrderBookDemo
-      startBlock: 25210270
+      startBlock: 23721650
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -70,11 +70,11 @@ dataSources:
 
   - kind: ethereum
     name: PositionRouter
-    network: Binance
+    network: bsc
     source:
-      address: "0x8e34c5f1DdB4A02C830C3c99aC41353A355c330E"
+      address: "0xdea8e4910872b0761262b67caff365d98f7911be"
       abi: PositionRouter
-      startBlock: 25210280
+      startBlock: 23721650
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5

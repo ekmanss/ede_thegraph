@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ ekmanss/ede_thegraph",
+    "deploy": "graph deploy --product hosted-service metaverseblock/proelp001",
     "create-local": "graph create ekmanss/ede_thegraph_elp1 --node http://127.0.0.1:8020",
     "remove-local": "graph remove ekmanss/ede_thegraph_elp1 --node http://127.0.0.1:8020 ",
     "deploy-local": "graph deploy ekmanss/ede_thegraph_elp1 --debug --ipfs http://127.0.0.1:5001 --node http://127.0.0.1:8020"
